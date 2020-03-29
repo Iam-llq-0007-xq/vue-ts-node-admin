@@ -7,33 +7,35 @@
       :collapse-transition="false"
       mode="vertical"
     >
-      <sidebar-item
+      <menu-item
         v-for="route in permissionRoutes"
         :key="route.path"
         :item="route"
         :base-path="route.path"
       />
     </el-menu>
-    </el-scrollbar>
+  </el-scrollbar>
 </template>
 
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
-import { Route } from '@/types'
-const ElMenu = require('element-ui').Menu
+import { Vue, Component } from "vue-property-decorator";
+import { Route } from "@/types";
+import { Menu as ElMenu } from "element-ui";
+import MenuItem from "./MenuItem.vue";
 
 @Component({
   components: {
+    MenuItem,
     ElMenu
   }
 })
-export default class MenuModule extends Vue {
-  activeMenu: string  = '';
+export default class Menu extends Vue {
+  activeMenu: string = "";
   isCollapse: boolean = false;
-  
+
   get permissionRoutes(): Route[] {
-    return []
-  } 
+    return [];
+  }
 }
 </script>
 

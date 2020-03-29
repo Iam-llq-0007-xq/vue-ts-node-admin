@@ -1,6 +1,6 @@
 "use strict";
 const path = require("path");
-const defaultSettings = require("./src/settings.ts");
+const defaultSettings = {} // require("./src/settings");
 
 function resolve(dir) {
   return path.join(__dirname, dir);
@@ -106,7 +106,7 @@ module.exports = {
   configureWebpack: {
     // provide the app's title in webpack's name field, so that
     // it can be accessed in index.html to inject the correct title.
-    name: nameOfIndex,
+    name: title,
     resolve: {
       alias: {
         "@": resolve("src")

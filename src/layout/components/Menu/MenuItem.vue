@@ -43,59 +43,30 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator'
-import { Route } from '@/types'
-const ElMenuItem = require('element-ui').MenuItem
+import { Vue, Component, Prop } from "vue-property-decorator";
+import { Route } from "@/types";
+import { MenuItem as ElMenuItem } from 'element-ui'
+import Link from './Link.vue'
 
-const isExternal = (path: string): boolean => /^(https?:|mailto:|tel:)/.test(path)
+const isExternal = (path: string): boolean =>
+  /^(https?:|mailto:|tel:)/.test(path);
 
-@Component({
-  name: 'link',
-  template: `<component :is="type" v-bind="linkProps(to)"><slot /></component>`,
-  props: {
-    to: {
-      required: true,
-      type: String,
-      default: ''
-    }
-  },
-  computed: {
-    isExternal(): boolean {
-      return isExternal(this.to)
-    },
-     type(): 'a' | 'router-link' {
-        return (this.isExternal && 'a') || 'router-link'
-      }
-  },
-  methods:  {
-    // https://github.com/PanJiaChen/vue-admin-template/issues/274
-  linkProps(url: string): LinkPropsInterface {
-    return (
-      (this.isExternal && {
-        href: url,
-        target: '_blank',
-        rel: 'noopener'
-      }) || {
-        to: url
-      }
-    )
-  }
-  }
-})
 @Component({
   components: {
-    ElMenuItem
+    ElMenuItem,
+    AppLink: Link
   }
 })
-export default class MenuItemModule extends Vue {
-  @Prop({ required: true, default: () => ({}) }) readonly item: Route; 
-}
 
-interface LinkPropsInterface {
-  to?: string
-  href?: string
-  target?: string
-  rel?: string
+export default class MenuItem extends Vue {
+  @Prop({ required: true }) readonly item: Route = {
+    hidden: false,
+    alwaysShow: true,
+    redirect: 'noRedirect',
+    name: '',
+    meta: { title: '', activeMenu: '' },
+    children: []
+  };
 }
 </script>
 
