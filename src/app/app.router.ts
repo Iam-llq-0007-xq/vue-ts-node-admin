@@ -6,6 +6,7 @@ import Login from './pages/login/login.router';
 import Dashboard from './pages/dashboard/dashboard.router';
 import Redirect from './pages/redirect/redirect.router';
 import errorPages from './pages/error-pages/errorPages.router';
+import Admin from './pages/admin/admin.router'
 
 Vue.use(VueRouter);
 
@@ -16,8 +17,9 @@ export const constantRoutes: Route[] = [
 
 export const asyncRouters: Route[] = [
   ...Dashboard,
+  ...Admin,
   ...errorPages,
-];
+]; 
 
 const createRouter = (): RouterConfig => new VueRouter({
   mode: 'history',
