@@ -18,19 +18,19 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component } from "vue-property-decorator";
-import { Route } from "@/types";
-import { Menu as ElMenu } from "element-ui";
-import MenuItem from "./MenuItem.vue";
+import { Vue, Component } from 'vue-property-decorator';
+import { Route } from '@/app/interface/router';
+import { Menu as ElMenu } from 'element-ui';
+import MenuItem from './MenuItem.vue';
 
 @Component({
   components: {
+    ElMenu,
     MenuItem,
-    ElMenu
-  }
+  },
 })
 export default class Menu extends Vue {
-  activeMenu: string = "";
+  activeMenu: string = '';
   isCollapse: boolean = false;
 
   get permissionRoutes(): Route[] {
@@ -39,5 +39,4 @@ export default class Menu extends Vue {
 }
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

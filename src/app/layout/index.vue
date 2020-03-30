@@ -15,7 +15,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import { Aside as ElAside, Container as ElContainer, Main as ElMain } from 'element-ui';
-import { Menu, Logo } from './components/index.js';
+import { Menu, Logo } from './components';
 
 @Component({
   components: {
@@ -23,8 +23,8 @@ import { Menu, Logo } from './components/index.js';
     Logo,
     ElAside,
     ElContainer,
-    ElMain
-  }
+    ElMain,
+  },
 })
 export default class LayoutComponent extends Vue {
   get activePath(): string {
@@ -33,5 +33,4 @@ export default class LayoutComponent extends Vue {
 }
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

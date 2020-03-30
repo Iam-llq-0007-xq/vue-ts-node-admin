@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import { Route, RouterConfig } from '@/types';
-import Layout from '@/Layout/index.vue';
+import { Route, RouterConfig } from '@/app/interface/router';
+import Layout from './layout/index.vue';
 import Login from './pages/login/login.router';
 import Dashboard from './pages/dashboard/dashboard.router';
 import Redirect from './pages/redirect/redirect.router';

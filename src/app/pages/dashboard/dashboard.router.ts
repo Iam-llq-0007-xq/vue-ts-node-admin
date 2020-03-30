@@ -1,5 +1,5 @@
-import { Route } from '@/types';
-import Layout from '@/layout/index.vue';
+import { Route } from '@/app/interface/router';
+import Layout from '@/app/layout/index.vue';
 const router: Route[] = [
   {
     path: '/',

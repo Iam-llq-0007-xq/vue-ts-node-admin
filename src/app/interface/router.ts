@@ -1,4 +1,4 @@
-import { RouteConfig, RouterOptions, VueRouter } from 'vue-router/types/router'
+import { RouteConfig, RouterOptions, VueRouter } from 'vue-router/types/router';
 
 export interface RouterConfig extends VueRouter {
   matcher?: any;

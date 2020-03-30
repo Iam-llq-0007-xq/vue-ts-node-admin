@@ -1,4 +1,4 @@
-import { Route } from '@/types';
+import { Route } from '@/app/interface/router';
 import Login from './login.vue';
 
 const router: Route[] = [

@@ -5,11 +5,9 @@
 </template>
 
 <script lang="ts">
-import { Vue } from 'vue-property-decorator'
+import { Vue } from 'vue-property-decorator';
 
 export default class ErrorPage404 extends Vue {}
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
