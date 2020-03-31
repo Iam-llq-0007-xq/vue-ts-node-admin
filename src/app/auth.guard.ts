@@ -1,30 +1,28 @@
-import router from './app.router';
-import { RouteConfig } from './interface/router';
+import router, { asyncRouters } from './app.router';
+import { Route as RouteConfig } from './interface/router';
+import { Route } from 'vue-router';
 import { Message } from 'element-ui';
 import { getToken } from './global.state';
-import { asyncRouters } from './app.router';
-import Nprogress from 'nprogress';
-import 'nprogress.css';
 
-const whiteList: string[] = [];
-router.beforeEach(async (to, from, next) => {
+const whiteList: string[] = ['/login'];
+router.beforeEach(async (to: Route, _: Route, next: any) => {
   const hasToken: string | undefined = getToken();
 
   if (hasToken) {
     if (to.path === '/login') {
       next('/');
     } else {
-      const role = 'admin'
+      const role = 'admin';
       const accessedRoutes = getRoutes(role);
       router.addRoutes(accessedRoutes);
-      
-      next({ ...to, replace: true })
+
+      next({ ...to, replace: true });
     }
   } else {
     if (whiteList.indexOf(to.path) !== -1) {
-      next()
+      next();
     } else {
-      next(`/login?redirect=${to.path}`)
+      next(`/login?redirect=${to.path}`);
     }
   }
 });
@@ -40,7 +38,7 @@ function getRoutes(role: string): RouteConfig[] {
 }
 
 function generateRoutes(accessedRoutesNames: string[]): RouteConfig[] {
-  let accessedRoutes: RouteConfig[] = filterAsyncRoutes(asyncRouters, accessedRoutesNames);
+  const accessedRoutes: RouteConfig[] = filterAsyncRoutes(asyncRouters, accessedRoutesNames);
   return accessedRoutes;
 }
 
@@ -51,10 +49,12 @@ function hasPermission(routesNames: string[], route: RouteConfig): boolean {
 function filterAsyncRoutes(routes: RouteConfig[], routesNames: string[]): RouteConfig[] {
   const res: RouteConfig[] = [];
 
-  routes.forEach(route => {
-    const tmp = { ...route };
+  routes.forEach((route: RouteConfig) => {
+    const tmp: any = { ...route };
     if (hasPermission(routesNames, tmp)) {
-      if (tmp.children) tmp.children = filterAsyncRoutes(tmp.children, routesNames);
+      if (tmp.children) {
+        tmp.children = filterAsyncRoutes(tmp.children, routesNames);
+      }
 
       res.push(tmp);
     }
