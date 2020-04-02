@@ -18,7 +18,9 @@ Vue.use(ElButton);
 @Component({})
 export default class Login extends Vue {
   form: { userName: string; pwd: string } = { userName: 'xq', pwd: 'asdf' };
-  submit() {}
+  submit() {
+    
+  };
 }
 </script>
 

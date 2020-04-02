@@ -2,7 +2,7 @@ import router, { asyncRouters } from './app.router';
 import { Route as RouteConfig } from './interface/router';
 import { Route } from 'vue-router';
 import { Message } from 'element-ui';
-import { getToken } from './global.state';
+import { getToken } from './cookie.state';
 
 const whiteList: string[] = ['/login'];
 router.beforeEach(async (to: Route, _: Route, next: any) => {

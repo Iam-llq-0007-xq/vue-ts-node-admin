@@ -12,7 +12,7 @@ Vue.use(VueRouter);
 
 export const constantRoutes: Route[] = [...Redirect, ...Login];
 
-export const asyncRouters: Route[] = []; // [...Dashboard, ...Admin, ...errorPages];
+export const asyncRouters: Route[] = [...Dashboard, ...Admin, ...errorPages];
 
 const createRouter = (): RouterConfig =>
   new VueRouter({
