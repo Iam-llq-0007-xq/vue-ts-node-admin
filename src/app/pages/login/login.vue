@@ -11,19 +11,14 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
-import { Button as ElButton } from 'element-ui'
-import 'element-ui'
+import { Button as ElButton } from 'element-ui';
 
-@Component({
-  components: {
-    ElButton
-  }
-})
+Vue.use(ElButton);
+
+@Component({})
 export default class Login extends Vue {
-  form: { userName: string, pwd: string } = { userName: 'xq', pwd: 'asdf' };
-  submit() {
-
-  }
+  form: { userName: string; pwd: string } = { userName: 'xq', pwd: 'asdf' };
+  submit() {}
 }
 </script>
 

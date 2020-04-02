@@ -52,11 +52,12 @@ import { Route } from '@/app/interface/router';
 import { MenuItem as ElMenuItem } from 'element-ui';
 import Link from './Link.vue';
 
+Vue.use(ElMenuItem);
+
 const isExternal = (path: string): boolean => /^(https?:|mailto:|tel:)/.test(path);
 
 @Component({
   components: {
-    ElMenuItem,
     AppLink: Link,
   },
 })

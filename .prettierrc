@@ -1,9 +1,13 @@
 {
-  "printWidth": 200,
+  "printWidth": 300,
   "tabWidth": 2,
   "semi": true,
   "singleQuote": true,
   "eslintIntegration": true,
   "stylelintIntegration": true,
-  "trailingComma": "all"
+  "trailingComma": "all",
+  "proseWrap": "preserve",
+  "arrowParens": "always",
+  "jsxBracketSameLine": true,
+  "semicolon": true
 }

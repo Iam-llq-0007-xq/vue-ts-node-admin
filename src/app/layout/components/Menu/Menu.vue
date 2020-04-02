@@ -23,9 +23,10 @@ import { Route } from '@/app/interface/router';
 import { Menu as ElMenu } from 'element-ui';
 import MenuItem from './MenuItem.vue';
 
+Vue.use(ElMenu);
+
 @Component({
   components: {
-    ElMenu,
     MenuItem,
   },
 })

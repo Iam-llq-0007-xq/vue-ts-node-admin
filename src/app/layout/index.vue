@@ -17,13 +17,14 @@ import { Component, Vue } from 'vue-property-decorator';
 import { Aside as ElAside, Container as ElContainer, Main as ElMain } from 'element-ui';
 import { Menu, Logo } from './components';
 
+Vue.use(ElAside);
+Vue.use(ElContainer);
+Vue.use(ElMain);
+
 @Component({
   components: {
     Menu,
     Logo,
-    ElAside,
-    ElContainer,
-    ElMain,
   },
 })
 export default class LayoutComponent extends Vue {
