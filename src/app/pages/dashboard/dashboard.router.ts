@@ -3,9 +3,9 @@ import Layout from '@/app/layout/index.vue';
 import Dashboard from './dashboard.vue';
 const router: Route[] = [
   {
-    path: '/',
+    path: '/dashboard',
     component: Layout,
-    redirect: '/dashboard',
+    redirect: '/dashboard/index',
     hidden: true,
     alwaysShow: true,
     children: [

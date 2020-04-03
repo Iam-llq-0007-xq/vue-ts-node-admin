@@ -19,6 +19,7 @@
     "ordered-imports": false,
     "quotemark": [true, "single"],
     "member-access": false,
+    "no-console": false,
     "trailing-comma": [
       true,
       {

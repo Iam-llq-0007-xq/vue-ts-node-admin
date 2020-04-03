@@ -27,9 +27,10 @@ module.exports = {
   publicPath: '/',
   outputDir: 'dist',
   assetsDir: 'static',
-  lintOnSave: process.env.NODE_ENV !== 'production',
+  lintOnSave: true, // process.env.NODE_ENV !== 'production',
   productionSourceMap: false,
   devServer: {
+    proxy: `http://localhost:8001`,
     port: port,
     open: false,
     overlay: {

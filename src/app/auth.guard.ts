@@ -1,12 +1,12 @@
-import router, { asyncRouters } from './app.router';
-import { Route as RouteConfig } from './interface/router';
 import { Route } from 'vue-router';
 import { Message } from 'element-ui';
-import { getToken } from './cookie.state';
+import router, { asyncRouters } from './app.router';
+import { Route as RouteConfig } from './interface/router';
+import { StoreStateService } from './store.state.service';
 
 const whiteList: string[] = ['/login'];
 router.beforeEach(async (to: Route, _: Route, next: any) => {
-  const hasToken: string | undefined = getToken();
+  const hasToken: string | undefined = StoreStateService.getToken();
 
   if (hasToken) {
     if (to.path === '/login') {
@@ -15,6 +15,8 @@ router.beforeEach(async (to: Route, _: Route, next: any) => {
       const role = 'admin';
       const accessedRoutes = getRoutes(role);
       router.addRoutes(accessedRoutes);
+
+      console.log(accessedRoutes, router);
 
       next({ ...to, replace: true });
     }
