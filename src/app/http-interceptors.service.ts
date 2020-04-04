@@ -11,7 +11,7 @@ const service = Axios.create({
 service.interceptors.request.use(
   (config) => {
     console.log('request ~>', config.url, config);
-    const token = getToken();
+    const token = StoreStateService.getToken();
     if (token) {
       config.headers.token = token;
     }

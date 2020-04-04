@@ -16,6 +16,7 @@ router.beforeEach(async (to: Route, _: Route, next: any) => {
       const accessedRoutes = getRoutes(role);
       router.addRoutes(accessedRoutes);
 
+
       console.log(accessedRoutes, router);
 
       next({ ...to, replace: true });
