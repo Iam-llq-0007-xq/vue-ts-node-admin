@@ -18,7 +18,7 @@
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
 import { Button as ElButton, Form as ElForm, FormItem as ElFormItem, Input as ElInput } from 'element-ui';
-import { ApiService } from '@/app/app.service';
+import { ApiService } from '@/app/api.service';
 import { StoreStateService } from '@/app/store.state.service'
 
 Vue.use(ElButton);

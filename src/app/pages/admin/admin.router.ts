@@ -1,5 +1,6 @@
 import { Route } from '@/app/interface/router';
 import Layout from '@/app/layout/index.vue';
+import Admin from './admin.vue';
 const router: Route[] = [
   {
     path: '/admin',
@@ -11,6 +12,7 @@ const router: Route[] = [
       {
         path: 'index',
         name: 'admin',
+        component: Admin,
         meta: {
           title: 'admin',
         },

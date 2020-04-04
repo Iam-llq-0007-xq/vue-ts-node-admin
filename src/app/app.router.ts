@@ -13,12 +13,6 @@ Vue.use(VueRouter);
 export const constantRoutes: Route[] = [...Redirect, ...Login];
 
 export const asyncRouters: Route[] = [
-  {
-    path: '/',
-    redirect: '/dashboard',
-    hidden: true,
-    alwaysShow: false,
-  },
   ...Dashboard,
   ...Admin,
   ...errorPages,

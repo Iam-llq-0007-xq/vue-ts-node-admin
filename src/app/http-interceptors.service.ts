@@ -4,7 +4,7 @@ import VueRx from 'vue-rx';
 import { Observable } from 'rxjs';
 
 const service = Axios.create({
-  baseURL: '/',
+  baseURL: '',
   timeout: 3000,
 });
 

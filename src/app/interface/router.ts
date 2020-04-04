@@ -8,9 +8,9 @@ export interface ChildRoute extends RouteConfig {
   hidden?: boolean;
   alwaysShow?: boolean;
   redirect?: 'noRedirect' | string;
-  name: string;
+  name?: string;
   meta: {
-    title: string;
+    title?: string;
     icon?: string;
     noCache?: boolean;
     breadcrumb?: boolean;
@@ -19,8 +19,8 @@ export interface ChildRoute extends RouteConfig {
 }
 
 export interface Route extends RouteConfig {
-  hidden: boolean;
-  alwaysShow: boolean;
+  hidden?: boolean;
+  alwaysShow?: boolean;
   redirect?: 'noRedirect' | string;
   name?: string;
   meta?: {

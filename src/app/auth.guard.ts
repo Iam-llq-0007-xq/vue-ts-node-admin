@@ -5,21 +5,26 @@ import { Route as RouteConfig } from './interface/router';
 import { StoreStateService } from './store.state.service';
 
 const whiteList: string[] = ['/login'];
+let role = '';
 router.beforeEach(async (to: Route, _: Route, next: any) => {
   const hasToken: string | undefined = StoreStateService.getToken();
 
   if (hasToken) {
     if (to.path === '/login') {
-      next('/');
+      next({ path: '/' });
     } else {
-      const role = 'admin';
-      const accessedRoutes = getRoutes(role);
-      router.addRoutes(accessedRoutes);
+      if (!role) {
+        role = 'admin';
+        const accessedRoutes = getRoutes(role);
+        router.addRoutes(accessedRoutes);
 
+        console.log(accessedRoutes, router);
+        console.log(to);
 
-      console.log(accessedRoutes, router);
-
-      next({ ...to, replace: true });
+        next({ ...to, replace: true });
+      } else {
+        next();
+      }
     }
   } else {
     if (whiteList.indexOf(to.path) !== -1) {
