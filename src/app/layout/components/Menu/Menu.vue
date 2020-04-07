@@ -1,5 +1,5 @@
 <template>
-  <el-scrollbar>
+  <div>
     <el-menu
       :default-active="activeMenu"
       :collapse="isCollapse"
@@ -14,7 +14,7 @@
         :base-path="route.path"
       />
     </el-menu>
-  </el-scrollbar>
+  </div>
 </template>
 
 <script lang="ts">
@@ -22,6 +22,7 @@ import { Vue, Component } from 'vue-property-decorator';
 import { Route } from '@/app/interface/router';
 import { Menu as ElMenu } from 'element-ui';
 import MenuItem from './MenuItem.vue';
+import { AuthModule } from '@/app/store/modules/auth';
 
 Vue.use(ElMenu);
 
@@ -35,7 +36,7 @@ export default class Menu extends Vue {
   isCollapse: boolean = false;
 
   get permissionRoutes(): Route[] {
-    return [];
+    return AuthModule.dynamicRoutes;
   }
 }
 </script>

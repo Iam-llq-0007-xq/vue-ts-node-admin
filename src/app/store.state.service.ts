@@ -8,9 +8,10 @@ const CompanyNameKey = md5('Senserealty-CompanyName');
 const IsRootKey = md5('Senserealty-IsRoot');
 const NodeIdKey = md5('Senserealty-NodeId');
 const NodeNameKey = md5('Senserealty-NodeName');
-const ProdectlineKey = md5('Senserealty-Prodectline');
+const ProductlineKey = md5('Senserealty-Productline');
 const ProductlineNameKey = md5('Senserealty-ProductlineName');
 const RoleKey = md5('Senserealty-Role');
+const EmailKey = md5('Senserealty-Email');
 const UidKey = md5('Senserealty-Uid');
 const UsernameKey = md5('Senserealty-Username');
 
@@ -57,11 +58,11 @@ export class StoreStateService {
   static removeNodeName() {
     return store.remove(NodeNameKey);
   }
-  static getProdectline() {
-    return store.get(ProdectlineKey);
+  static getProductline() {
+    return store.get(ProductlineKey);
   }
-  static removeProdectline() {
-    return store.remove(ProdectlineKey);
+  static removeProductline() {
+    return store.remove(ProductlineKey);
   }
   static getProductlineName() {
     return store.get(ProductlineNameKey);
@@ -74,6 +75,12 @@ export class StoreStateService {
   }
   static removeRole() {
     return store.remove(RoleKey);
+  }
+  static getEmail() {
+    return store.get(EmailKey);
+  }
+  static removeEmail() {
+    return store.remove(EmailKey);
   }
   static getUid() {
     return store.get(UidKey);
@@ -116,8 +123,8 @@ export class StoreStateService {
     return store.set(NodeNameKey, nodeName);
   }
 
-  setProdectline(prodectline: string) {
-    return store.set(ProdectlineKey, prodectline);
+  setProductline(productline: string) {
+    return store.set(ProductlineKey, productline);
   }
 
   setProductlineName(productlineName: string) {

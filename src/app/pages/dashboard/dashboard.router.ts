@@ -6,7 +6,7 @@ const router: Route[] = [
     path: '/',
     component: Layout,
     redirect: '/dashboard',
-    hidden: true,
+    hidden: false,
     alwaysShow: true,
     children: [
       {

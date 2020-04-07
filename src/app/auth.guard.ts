@@ -3,9 +3,10 @@ import { Message } from 'element-ui';
 import router, { asyncRouters } from './app.router';
 import { Route as RouteConfig } from './interface/router';
 import { StoreStateService } from './store.state.service';
+import { UserModule } from '@/app/store/modules/user';
+import { AuthModule } from '@/app/store/modules/auth';
 
 const whiteList: string[] = ['/login'];
-let role = '';
 router.beforeEach(async (to: Route, _: Route, next: any) => {
   const hasToken: string | undefined = StoreStateService.getToken();
 
@@ -13,12 +14,31 @@ router.beforeEach(async (to: Route, _: Route, next: any) => {
     if (to.path === '/login') {
       next({ path: '/' });
     } else {
-      if (!role) {
-        role = 'admin';
-        const accessedRoutes = getRoutes(role);
-        router.addRoutes(accessedRoutes);
+      if (!UserModule.role) {
+        UserModule.GetUserInfo({
+          ak: StoreStateService.getAk(),
+          companyId: StoreStateService.getCompanyId(),
+          companyName: StoreStateService.getCompanyName(),
+          isRoot: StoreStateService.getIsRoot(),
+          nodeId: StoreStateService.getNodeId(),
+          nodeName: StoreStateService.getNodeName(),
+          productline: StoreStateService.getProductline(),
+          productlineName: StoreStateService.getProductlineName(),
+          role: StoreStateService.getRole(),
+          userId: StoreStateService.getUid(),
+          userName: StoreStateService.getUsername(),
+        });
 
-        console.log(accessedRoutes, router);
+        const roleMaps: any = {
+          admin: ['dashboard', 'admin'],
+          developer: ['dashboard', 'developer'],
+          editor: ['dashboard', 'editor'],
+        };
+        const accessedRoutesNames: string[] = roleMaps[UserModule.role];
+        AuthModule.GenerateRoutes(accessedRoutesNames);
+        router.addRoutes(AuthModule.routes);
+
+        console.log(AuthModule.routes, router);
         console.log(to);
 
         next({ ...to, replace: true });
