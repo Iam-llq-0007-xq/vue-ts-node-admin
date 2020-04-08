@@ -36,7 +36,7 @@ export default class Menu extends Vue {
   isCollapse: boolean = false;
 
   get permissionRoutes(): Route[] {
-    return AuthModule.dynamicRoutes;
+    return AuthModule.routes;
   }
 }
 </script>

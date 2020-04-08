@@ -17,8 +17,8 @@ interface LinkPropsConfig {
 
 @Component({})
 export default class Link extends Vue {
-  @Prop({ required: true })
-  private to: string = '';
+  @Prop({ required: true, default: '' })
+  private to!: string;
 
   get isExternal(): boolean {
     return isExternal(this.to);

@@ -6,12 +6,14 @@ const router: Route[] = [
   {
     path: '/redirect',
     component: Layout,
-    hidden: true,
-    alwaysShow: false,
+    meta: {
+      hidden: true,
+      alwaysShow: false,
+    },
     children: [
       {
         path: '/redirect/:path(.*)',
-        name: 'redirect',
+        name: 'Redirect',
         component: Redirect,
         meta: {
           title: 'redirect',

@@ -6,15 +6,26 @@ const router: Route[] = [
     path: '/admin',
     component: Layout,
     redirect: '/admin/index',
-    hidden: true,
-    alwaysShow: true,
+    meta: {
+      title: '一级Admin',
+    },
     children: [
       {
         path: 'index',
-        name: 'admin',
+        name: 'Admin',
         component: Admin,
         meta: {
           title: 'admin',
+          hidden: false,
+        },
+      },
+      {
+        path: 'D2',
+        name: 'D2',
+        component: Admin,
+        meta: {
+          title: 'D2',
+          hidden: false,
         },
       },
     ],

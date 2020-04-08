@@ -6,8 +6,9 @@ const router: Route[] = [
     path: '/login',
     name: '/login',
     component: Login,
-    hidden: true,
-    alwaysShow: false,
+    meta: {
+      hidden: true,
+    }
   },
 ];
 

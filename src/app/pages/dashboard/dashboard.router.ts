@@ -6,15 +6,15 @@ const router: Route[] = [
     path: '/',
     component: Layout,
     redirect: '/dashboard',
-    hidden: false,
-    alwaysShow: true,
     children: [
       {
         path: 'dashboard',
-        name: 'dashboard',
+        name: 'Dashboard',
         component: Dashboard,
         meta: {
           title: '首页',
+          alwaysShow: true,
+          hidden: false,
         },
       },
     ],

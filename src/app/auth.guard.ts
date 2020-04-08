@@ -30,9 +30,9 @@ router.beforeEach(async (to: Route, _: Route, next: any) => {
         });
 
         const roleMaps: any = {
-          admin: ['dashboard', 'admin'],
-          developer: ['dashboard', 'developer'],
-          editor: ['dashboard', 'editor'],
+          admin: ['Dashboard', 'Admin', 'D2'],
+          developer: ['Dashboard', 'Developer'],
+          editor: ['Dashboard', 'Editor'],
         };
         const accessedRoutesNames: string[] = roleMaps[UserModule.role];
         AuthModule.GenerateRoutes(accessedRoutesNames);
@@ -57,9 +57,9 @@ router.beforeEach(async (to: Route, _: Route, next: any) => {
 
 function getRoutes(role: string): RouteConfig[] {
   const roleMaps: any = {
-    admin: ['dashboard', 'admin'],
-    developer: ['dashboard', 'developer'],
-    editor: ['dashboard', 'editor'],
+    admin: ['Dashboard', 'admin'],
+    developer: ['Dashboard', 'developer'],
+    editor: ['Dashboard', 'editor'],
   };
 
   return generateRoutes(roleMaps[role]);

@@ -5,13 +5,13 @@ export interface RouterConfig extends VueRouter {
 }
 
 export interface ChildRoute extends RouteConfig {
-  hidden?: boolean;
-  alwaysShow?: boolean;
   redirect?: 'noRedirect' | string;
-  name?: string;
+  name: string;
   meta: {
     title?: string;
     icon?: string;
+    hidden?: boolean;
+    alwaysShow?: boolean;
     noCache?: boolean;
     breadcrumb?: boolean;
     activeMenu?: string;
@@ -19,12 +19,12 @@ export interface ChildRoute extends RouteConfig {
 }
 
 export interface Route extends RouteConfig {
-  hidden?: boolean;
-  alwaysShow?: boolean;
   redirect?: 'noRedirect' | string;
   name?: string;
   meta?: {
-    title: string;
+    hidden?: boolean;
+    alwaysShow?: boolean;
+    title?: string;
     icon?: string;
     noCache?: boolean;
     breadcrumb?: boolean;
