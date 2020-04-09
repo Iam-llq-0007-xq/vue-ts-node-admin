@@ -24,15 +24,9 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
-import { Button as ElButton, Form as ElForm, FormItem as ElFormItem, Input as ElInput } from 'element-ui';
 import { ApiService } from '@/app/api.service';
 import { StoreStateService } from '@/app/store.state.service';
 import { UserModule } from '@/app/store/modules/user';
-
-Vue.use(ElButton);
-Vue.use(ElForm);
-Vue.use(ElFormItem);
-Vue.use(ElInput);
 
 @Component({})
 export default class Login extends Vue {

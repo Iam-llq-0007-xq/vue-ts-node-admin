@@ -49,12 +49,8 @@
 import { Vue, Component, Prop } from 'vue-property-decorator';
 import { Route, ChildRoute } from '@/app/interface/router';
 import Path from 'path';
-import { MenuItem as ElMenuItem, Submenu as ElSubmenu } from 'element-ui';
 import Link from './Link.vue';
 import Item from './Item.vue';
-
-Vue.use(ElMenuItem);
-Vue.use(ElSubmenu);
 
 const isExternal = (path: string): boolean => /^(https?:|mailto:|tel:)/.test(path);
 
