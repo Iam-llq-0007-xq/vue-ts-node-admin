@@ -1,21 +1,14 @@
 <template>
   <div>
     <h1>Login</h1>
-    <el-form
-      ref="form"
-      :model="form"
-      label-width="80px"
-    >
+    <el-form ref="form" :model="form" label-width="80px">
       <el-form-item label="userName">
         <el-input v-model="form.userName" />
       </el-form-item>
       <el-form-item label="pwd">
         <el-input v-model="form.pwd" />
       </el-form-item>
-      <el-button
-        type="primary"
-        @click="submit"
-      >
+      <el-button type="primary" @click="submit">
         login
       </el-button>
     </el-form>
@@ -41,28 +34,33 @@ export default class Login extends Vue {
   };
 
   async submit() {
-    const userInfo = { user_name: this.form.userName, pwd: this.form.pwd, scene: 'login' };
+    const userInfo = {
+      user_name: this.form.userName,
+      pwd: this.form.pwd,
+      scene: 'login',
+    };
     const res = await this.http.login(userInfo);
-    console.log('login success...', res);
+    this.getUserInfo(res);
+    this.$router.push('/');
+  }
 
-    this.storeState.setToken(res.token);
-    UserModule.GetToken(res.token);
-    this.storeState.setAk(res.ak);
-    this.storeState.setCompanyId(res.company_id);
-    this.storeState.setCompanyName(res.company_name);
-    const isRoot: string = this.isRootFromTypeAndNodeId(res.type, res.node_id);
+  getUserInfo(data: any) {
+    this.storeState.setToken(data.token);
+    UserModule.GetToken(data.token);
+    this.storeState.setAk(data.ak);
+    this.storeState.setCompanyId(data.company_id);
+    this.storeState.setCompanyName(data.company_name);
+    const isRoot: string = this.isRootFromTypeAndNodeId(data.type, data.node_id);
     this.storeState.setIsRoot(isRoot);
-    this.storeState.setNodeId(res.node_id);
-    this.storeState.setNodeName(res.node_name);
-    this.storeState.setProductline(this.toString(res.productline));
-    this.storeState.setProductlineName(this.toString(res.productline_name));
-    const role = this.getRoleFromRoleOrType(res.type, res.role);
+    this.storeState.setNodeId(data.node_id);
+    this.storeState.setNodeName(data.node_name);
+    this.storeState.setProductline(this.toString(data.productline));
+    this.storeState.setProductlineName(this.toString(data.productline_name));
+    const role = this.getRoleFromRoleOrType(data.type, data.role);
     this.storeState.setRole(role);
     // email
-    this.storeState.setUid(res.user_id);
-    this.storeState.setUsername(res.name);
-
-    this.$router.push('/');
+    this.storeState.setUid(data.user_id);
+    this.storeState.setUsername(data.name);
   }
 
   isRootFromTypeAndNodeId(type: string, nodeId: string): string {

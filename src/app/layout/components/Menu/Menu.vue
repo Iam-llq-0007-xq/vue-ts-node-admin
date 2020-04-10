@@ -4,6 +4,9 @@
     :collapse="isCollapse"
     :unique-opened="false"
     :collapse-transition="false"
+    :background-color="layoutVariabes.menuBg"
+    :text-color="layoutVariabes.menuText"
+    :active-text-color="layoutVariabes.menuActiveText"
     mode="vertical"
   >
     <menu-item
@@ -20,6 +23,7 @@ import { Vue, Component } from 'vue-property-decorator';
 import { Route } from '@/app/interface/router';
 import MenuItem from './MenuItem.vue';
 import { AuthModule } from '@/app/store/modules/auth';
+import layoutVariabes from '../../style/layout-variables.scss';
 
 @Component({
   components: {
@@ -29,6 +33,7 @@ import { AuthModule } from '@/app/store/modules/auth';
 export default class Menu extends Vue {
   activeMenu: string = '';
   isCollapse: boolean = false;
+  private layoutVariabes: any = layoutVariabes;
 
   get permissionRoutes(): Route[] {
     return AuthModule.routes;
@@ -36,4 +41,5 @@ export default class Menu extends Vue {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+</style>

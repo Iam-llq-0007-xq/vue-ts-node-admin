@@ -1,7 +1,7 @@
 <template>
   <div class="logo-wrapper">
     <slot>
-      <img class="logo" :src="src" :style="styles" alt="" />
+      <img class="logo" :src="src" :styles="styles" alt="" />
     </slot>
   </div>
 </template>
@@ -11,13 +11,18 @@ import { Vue, Component, Prop } from 'vue-property-decorator';
 
 @Component({})
 export default class Logo extends Vue {
-  @Prop({ default: '' }) private style!: string;
+  @Prop({ default: '' }) private styles!: string;
   @Prop({ default: '' }) private src!: string;
-
-  get styles(): string {
-    return this.style;
-  }
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.logo-wrapper {
+  padding: 5px;
+  box-sizing: border-box;
+  text-align: center;
+}
+.logo {
+  height: 100%;
+}
+</style>
