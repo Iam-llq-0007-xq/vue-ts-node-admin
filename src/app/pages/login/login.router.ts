@@ -8,7 +8,7 @@ const router: Route[] = [
     component: Login,
     meta: {
       hidden: true,
-    }
+    },
   },
 ];
 

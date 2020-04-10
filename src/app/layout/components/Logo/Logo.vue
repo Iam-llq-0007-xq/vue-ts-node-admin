@@ -1,7 +1,7 @@
 <template>
   <div class="logo-wrapper">
     <slot>
-      <img class="logo" :src="src" :style="styles" alt="">
+      <img class="logo" :src="src" :style="styles" alt="" />
     </slot>
   </div>
 </template>
@@ -15,10 +15,9 @@ export default class Logo extends Vue {
   @Prop({ default: '' }) private src!: string;
 
   get styles(): string {
-    return this.style
+    return this.style;
   }
 }
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

@@ -32,7 +32,7 @@ import { UserModule } from '@/app/store/modules/user';
 export default class Login extends Vue {
   private http = new ApiService();
   private storeState = new StoreStateService();
-  form: {
+  private form: {
     userName: string;
     pwd: string;
   } = {
