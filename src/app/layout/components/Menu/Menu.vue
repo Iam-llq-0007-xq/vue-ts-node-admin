@@ -23,6 +23,7 @@ import { Vue, Component } from 'vue-property-decorator';
 import { Route } from '@/app/interface/router';
 import MenuItem from './MenuItem.vue';
 import { AuthModule } from '@/app/store/modules/auth';
+import { SettingModule } from '@/app/store/modules/setting'
 import layoutVariabes from '../../style/layout-variables.scss';
 
 @Component({
@@ -31,12 +32,19 @@ import layoutVariabes from '../../style/layout-variables.scss';
   },
 })
 export default class Menu extends Vue {
-  activeMenu: string = '';
-  isCollapse: boolean = false;
+  private activeMenu: string = '';
   private layoutVariabes: any = layoutVariabes;
 
-  get permissionRoutes(): Route[] {
+  private get permissionRoutes(): Route[] {
     return AuthModule.routes;
+  }
+
+  private get isCollapse() {
+    return SettingModule.isCollapse;
+  }
+
+  created() {
+    this.activeMenu = this.$route.path;
   }
 }
 </script>
