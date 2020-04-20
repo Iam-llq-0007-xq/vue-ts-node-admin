@@ -7,6 +7,7 @@ import Dashboard from './pages/dashboard/dashboard.router';
 import Redirect from './pages/redirect/redirect.router';
 import errorPages from './pages/error-pages/errorPages.router';
 import Admin from './pages/admin/admin.router';
+import SvgTestPages from './pages/svg-test-pages/svg-test-pages.router';
 
 Vue.use(VueRouter);
 
@@ -15,6 +16,7 @@ export const constantRoutes: Route[] = [...Redirect, ...Login];
 export const asyncRouters: Route[] = [
   ...Dashboard,
   ...Admin,
+  ...SvgTestPages,
   ...errorPages,
 ];
 

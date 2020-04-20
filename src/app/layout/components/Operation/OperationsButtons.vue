@@ -40,8 +40,8 @@ export default class OperationsButtons extends Vue {
   }
 
   initOperators(operationInfos: Operator[]) {
-    const operators = operationInfos.reduce((operators: Operator[], operatorInfo: Operator) => {
-      operators.push({
+    const operators = operationInfos.reduce((operatorList: Operator[], operatorInfo: Operator) => {
+      operatorList.push({
         name: '',
         type: 'default',
         icon: '',
@@ -50,7 +50,7 @@ export default class OperationsButtons extends Vue {
         button: {},
         ...operatorInfo,
       });
-      return operators;
+      return operatorList;
     }, []);
     return operators;
   }

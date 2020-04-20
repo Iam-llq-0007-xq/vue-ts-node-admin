@@ -9,12 +9,12 @@ export interface ChildRoute extends RouteConfig {
   name: string;
   meta: {
     title?: string;
-    icon?: string;
     hidden?: boolean;
     alwaysShow?: boolean;
     noCache?: boolean;
     breadcrumb?: boolean;
     activeMenu?: string;
+    iconName?: string;
   };
 }
 
@@ -25,10 +25,10 @@ export interface Route extends RouteConfig {
     hidden?: boolean;
     alwaysShow?: boolean;
     title?: string;
-    icon?: string;
     noCache?: boolean;
     breadcrumb?: boolean;
     activeMenu?: string;
+    iconName?: string;
   };
   children?: ChildRoute[];
 }

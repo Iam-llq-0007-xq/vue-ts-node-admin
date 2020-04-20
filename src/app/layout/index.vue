@@ -54,7 +54,8 @@ export default class LayoutComponent extends Vue {
 aside {
   background: $menuBg;
   font-size: $menuFontSize;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans',
+    'Droid Sans', 'Helvetica Neue', sans-serif;
   color: $menuText;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -72,5 +73,30 @@ aside {
   /deep/ .operation {
     width: min-content;
   }
+  /deep/ {
+    .logo {
+      width: 100%;
+    }
+    [slot='title'] {
+      font-size: 0;
+    }
+    .el-submenu__icon-arrow {
+      display: none;
+    }
+  }
 }
+</style>
+
+<style lang="scss">
+@import './style/layout-variables.scss';
+
+/* svg[class*="svg-menu-"] {
+  fill: $menuText;
+}
+
+[role="menu"].is-active {
+  svg[class*="svg-menu-"] {
+    fill: $menuActiveText;
+  }
+} */
 </style>

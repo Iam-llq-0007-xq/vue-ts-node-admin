@@ -2,6 +2,7 @@ const express = require('express');
 const proxy = require('http-proxy-middleware').createProxyMiddleware
 const _ = require('lodash');
 const path = require('path');
+const history = require('./servers/history');
 require('dotenv').config();
 
 const port = process.env.SERVER_PORT || 8003;
@@ -9,7 +10,8 @@ const prefix = '';
 const _apiMatcher = (suffix) => `(${prefix}/${suffix})|${prefix}/**/${suffix}`;
 
 const app = express();
-app.use(express.static('dist'));
+app.use(history);
+app.use(express.static('dist/web/v1.0'));
 
 app.use(
   _apiMatcher('api'),

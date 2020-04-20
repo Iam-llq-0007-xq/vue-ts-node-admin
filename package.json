@@ -7,16 +7,15 @@
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "svg": "./node_modules/vue-svgicon/dist/lib/index.js -s ./src/app/icons/svg -t ./src/app/icons/components --ext ts --es6"
   },
   "dependencies": {
+    "connect-history-api-fallback": "^1.6.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "http-proxy-middleware": "^1.0.3",
-    "js-cookie": "^2.2.1",
-    "lodash": "^4.17.15",
-    "md5": "^2.2.1",
-    "normalize.css": "^8.0.1"
+    "lodash": "^4.17.15"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.9.0",
@@ -35,11 +34,15 @@
     "core-js": "^3.6.4",
     "element-ui": "^2.13.0",
     "geckodriver": "^1.19.1",
+    "js-cookie": "^2.2.1",
+    "md5": "^2.2.1",
     "node-sass": "^4.13.1",
+    "normalize.css": "^8.0.1",
     "nprogress": "^0.2.0",
     "rxjs": "^6.5.4",
     "sass-loader": "^8.0.2",
     "script-ext-html-webpack-plugin": "^2.1.4",
+    "simple-progress-webpack-plugin": "^1.1.2",
     "typescript": "~3.7.5",
     "vue": "^2.6.11",
     "vue-class-component": "^7.2.3",

@@ -9,6 +9,9 @@
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
 
+@Component({
+  name: 'Logo',
+})
 export default class Logo extends Vue {
   @Prop({ default: '' }) private styles!: string;
   @Prop({ default: '' }) private src!: string;

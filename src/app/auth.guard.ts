@@ -30,7 +30,7 @@ router.beforeEach(async (to: Route, _: Route, next: any) => {
         });
 
         const roleMaps: any = {
-          admin: ['Dashboard', 'Admin', 'D2'],
+          admin: ['Dashboard', 'Admin1-1', 'Admin1-2', 'Admin2-1', 'Admin2-2', 'Admin1-3', 'Admin3-1', 'SvgTestPages', 'SvgTestPages/index'],
           developer: ['Dashboard', 'Developer'],
           editor: ['Dashboard', 'Editor'],
         };
@@ -54,39 +54,3 @@ router.beforeEach(async (to: Route, _: Route, next: any) => {
     }
   }
 });
-
-function getRoutes(role: string): RouteConfig[] {
-  const roleMaps: any = {
-    admin: ['Dashboard', 'admin'],
-    developer: ['Dashboard', 'developer'],
-    editor: ['Dashboard', 'editor'],
-  };
-
-  return generateRoutes(roleMaps[role]);
-}
-
-function generateRoutes(accessedRoutesNames: string[]): RouteConfig[] {
-  const accessedRoutes: RouteConfig[] = filterAsyncRoutes(asyncRouters, accessedRoutesNames);
-  return accessedRoutes;
-}
-
-function hasPermission(routesNames: string[], route: RouteConfig): boolean {
-  return route.name ? routesNames.includes(route.name) : true;
-}
-
-function filterAsyncRoutes(routes: RouteConfig[], routesNames: string[]): RouteConfig[] {
-  const res: RouteConfig[] = [];
-
-  routes.forEach((route: RouteConfig) => {
-    const tmp: any = { ...route };
-    if (hasPermission(routesNames, tmp)) {
-      if (tmp.children) {
-        tmp.children = filterAsyncRoutes(tmp.children, routesNames);
-      }
-
-      res.push(tmp);
-    }
-  });
-
-  return res;
-}

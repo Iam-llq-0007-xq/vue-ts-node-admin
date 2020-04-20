@@ -1,10 +1,11 @@
 import Vue from 'vue';
 import App from './app.vue';
 import AppRouter from './app.router';
-import './auth.guard';
-import '@/app/http-interceptors.service';
-import './element/element-module';
+import './element/main';
+import './icons/main';
 import './app.module.scss';
+import './http-interceptors.service';
+import './auth.guard';
 
 Vue.config.productionTip = false;
 

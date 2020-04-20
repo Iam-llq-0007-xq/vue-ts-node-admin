@@ -9,12 +9,7 @@
     :active-text-color="layoutVariabes.menuActiveText"
     mode="vertical"
   >
-    <menu-item
-      v-for="route in permissionRoutes"
-      :key="route.path"
-      :item="route"
-      :base-path="route.path"
-    />
+    <menu-item v-for="route in permissionRoutes" :key="route.path" :item="route" :base-path="route.path" />
   </el-menu>
 </template>
 
@@ -23,7 +18,7 @@ import { Vue, Component } from 'vue-property-decorator';
 import { Route } from '@/app/interface/router';
 import MenuItem from './MenuItem.vue';
 import { AuthModule } from '@/app/store/modules/auth';
-import { SettingModule } from '@/app/store/modules/setting'
+import { SettingModule } from '@/app/store/modules/setting';
 import layoutVariabes from '../../style/layout-variables.scss';
 
 @Component({
@@ -49,5 +44,4 @@ export default class Menu extends Vue {
 }
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

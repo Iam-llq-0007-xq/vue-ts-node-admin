@@ -13,8 +13,8 @@ const router: Route[] = [
         component: Dashboard,
         meta: {
           title: '首页',
-          alwaysShow: true,
           hidden: false,
+          iconName: 'el-icon-menu',
         },
       },
     ],

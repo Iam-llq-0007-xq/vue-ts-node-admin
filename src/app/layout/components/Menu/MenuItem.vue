@@ -1,35 +1,20 @@
 <template>
   <div v-if="!item.meta || !item.meta.hidden">
     <template v-if="!alwaysShowRootMenu && theOnlyOneChild && !theOnlyOneChild.children">
-      <app-link
-        v-if="theOnlyOneChild.meta"
-        :to="resolvePath(theOnlyOneChild.path)"
-      >
-        <el-menu-item
-          :index="resolvePath(theOnlyOneChild.path)"
-          :class="{ 'submenu-title-noDropdown': isFirstLevel }"
-        >
-          <span
-            v-if="theOnlyOneChild.meta.title"
-            slot="title"
-          >
+      <app-link v-if="theOnlyOneChild.meta" :to="resolvePath(theOnlyOneChild.path)">
+        <el-menu-item :index="resolvePath(theOnlyOneChild.path)" :class="{ 'submenu-title-noDropdown': isFirstLevel }">
+          <icon :icon-name="theOnlyOneChild.meta && theOnlyOneChild.meta.iconName" />
+          <span v-if="theOnlyOneChild.meta.title" slot="title">
             {{ theOnlyOneChild.meta.title }}
           </span>
         </el-menu-item>
       </app-link>
     </template>
 
-    <el-submenu
-      v-else
-      ref="subMenu"
-      :index="resolvePath(item.path)"
-      popper-append-to-body
-    >
+    <el-submenu v-else ref="subMenu" :index="resolvePath(item.path)" popper-append-to-body>
       <template slot="title">
-        <span
-          v-if="item.meta && item.meta.title"
-          slot="title"
-        >
+        <icon :icon-name="item.meta && item.meta.iconName" />
+        <span slot="title" v-if="item.meta && item.meta.title">
           {{ item.meta.title }}
         </span>
       </template>
@@ -49,8 +34,8 @@
 import { Vue, Component, Prop } from 'vue-property-decorator';
 import { Route, ChildRoute } from '@/app/interface/router';
 import Path from 'path';
+import Icon from '@/app/components/Icon/Icon.vue';
 import Link from './Link.vue';
-import Item from './Item.vue';
 
 const isExternal = (path: string): boolean => /^(https?:|mailto:|tel:)/.test(path);
 
@@ -58,7 +43,7 @@ const isExternal = (path: string): boolean => /^(https?:|mailto:|tel:)/.test(pat
   name: 'MenuItem',
   components: {
     AppLink: Link,
-    Item,
+    Icon,
   },
 })
 export default class MenuItem extends Vue {
