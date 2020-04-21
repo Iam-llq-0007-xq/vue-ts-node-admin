@@ -22,8 +22,8 @@ class Auth extends VuexModule implements Routes {
 
   @Mutation
   private SET_ROUTES(routes: RouteConfig[]) {
-    this.routes = constantRoutes.concat(routes);
-    this.dynamicRoutes = this.routes;
+    this.routes = constantRoutes.concat(routes); // get dynamicRoutes + constantRoutes
+    this.dynamicRoutes = routes;
   }
 }
 

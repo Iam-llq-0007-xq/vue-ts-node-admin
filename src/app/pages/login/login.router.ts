@@ -4,7 +4,7 @@ import Login from './login.vue';
 const router: Route[] = [
   {
     path: '/login',
-    name: '/login',
+    name: 'Login',
     component: Login,
     meta: {
       hidden: true,

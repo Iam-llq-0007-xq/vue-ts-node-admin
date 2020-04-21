@@ -1,24 +1,23 @@
-import httpInterceptors from './http-interceptors.service';
-import { AxiosInstance } from 'axios';
-import { Observables } from 'vue-rx';
-import { Observable } from 'rxjs';
-import { ProductLine } from './interface/info';
+import { HttpClient } from './http.service';
+import { of, Observable, from, config } from 'rxjs';
+import { pluck } from 'rxjs/operators';
 import md5 from 'md5';
+import { ProductLine } from './interface/info';
 
 const Prefix = 'api/sensego/console/v1.0/';
 
 export class ApiService {
-  private http: AxiosInstance;
+  private http: any;
 
   constructor() {
-    this.http = httpInterceptors;
+    this.http = new HttpClient();
   }
 
   login(data: {
     user_name: string;
     pwd: string;
     scene: string;
-  }): Promise<{
+  }): Observable<{
     type: string;
     name: string;
     user_id: string;
@@ -43,7 +42,5 @@ export class ApiService {
   }> {
     return this.http.get(Prefix + 'getproductline');
   }
-
-
 }
 

@@ -1,45 +1,34 @@
-import Axios, { AxiosStatic, AxiosResponse, AxiosInterceptorManager, AxiosInstance } from 'axios';
+// tslint:disable:max-classes-per-file
+import { Rxios, RxiosRequestConfig, RxiosResponseConfig, InterceptorsManager } from './utils/rxios';
 import { StoreStateService } from './store.state.service';
-import VueRx from 'vue-rx';
-import { Observable } from 'rxjs';
 
-const service = Axios.create({
-  baseURL: '',
-  timeout: 3000,
-});
-
-service.interceptors.request.use(
-  (config) => {
-    console.log('request ~>', config.url, config);
+export class AuthInterceptor implements InterceptorsManager<RxiosRequestConfig> {
+  public onFulfilled(config: any) {
+    console.log('request ~> ', config.url, config);
     const token = StoreStateService.getToken();
     if (token) {
       config.headers.token = token;
     }
-
     return config;
-  },
-  (error) => {
-    Promise.reject(error);
   }
-);
+  public onRejected(error: any): any {
+    return Promise.reject('AuthInterceptor ~>', error);
+  }
+}
 
-service.interceptors.response.use(
-  (response) => {
-    console.log('response ~>', response);
+export class ErrorHandleInterceptor implements InterceptorsManager<RxiosResponseConfig> {
+  public onFulfilled(response: any) {
+    console.log('response ~> ', response);
     const res = response.data;
-    const { error_code, message = '' } = res;
-
+    const { error_code, msg } = res;
     if (error_code !== 0) {
-      // coding...
+      // coding ...
 
-      return Promise.reject(new Error(message || 'Error'));
+      return Promise.reject(new Error(msg || 'Error'));
     }
-
-    return res;
-  },
-  (error: any) => {
-    return Promise.reject(error);
+    return response;
   }
-);
-
-export default service;
+  public onRejected(error: any): any {
+    return Promise.reject('ErrorHandleInterceptor ~>', error);
+  }
+}

@@ -19,7 +19,7 @@ export interface ChildRoute extends RouteConfig {
 }
 
 export interface Route extends RouteConfig {
-  redirect?: 'noRedirect' | string;
+  redirect?: 'noRedirect' | any;
   name?: string;
   meta?: {
     hidden?: boolean;

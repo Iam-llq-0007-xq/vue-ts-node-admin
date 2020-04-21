@@ -33,20 +33,27 @@ export default class Login extends Vue {
     pwd: 'SKtest123',
   };
 
-  async submit() {
+  submit() {
     const userInfo = {
       user_name: this.form.userName,
       pwd: this.form.pwd,
       scene: 'login',
     };
-    const res = await this.http.login(userInfo);
-    this.getUserInfo(res);
-    this.$router.push('/');
+    this.http.login(userInfo).subscribe(
+      (res) => {
+        console.log('login res ...', res);
+        this.getUserInfo(res);
+      },
+      (error) => {},
+      () => {
+        this.$router.push('/');
+      },
+    );
   }
 
   getUserInfo(data: any) {
     this.storeState.setToken(data.token);
-    UserModule.GetToken(data.token);
+    UserModule.SetToken();
     this.storeState.setAk(data.ak);
     this.storeState.setCompanyId(data.company_id);
     this.storeState.setCompanyName(data.company_name);
@@ -58,7 +65,7 @@ export default class Login extends Vue {
     this.storeState.setProductlineName(this.toString(data.productline_name));
     const role = this.getRoleFromRoleOrType(data.type, data.role);
     this.storeState.setRole(role);
-    // email
+    this.storeState.setEmail(data.email);
     this.storeState.setUid(data.user_id);
     this.storeState.setUsername(data.name);
   }

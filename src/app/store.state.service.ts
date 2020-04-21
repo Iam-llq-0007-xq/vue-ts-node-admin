@@ -142,4 +142,8 @@ export class StoreStateService {
   setUsername(username: string) {
     return store.set(UsernameKey, username);
   }
+
+  setEmail(email: string) {
+    return store.set(EmailKey, email);
+  }
 }
