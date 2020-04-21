@@ -8,6 +8,7 @@ const Setting = require('./src/setting.ts');
 const devServerPort = 8080; // TODO: get this variable from setting.ts
 const name = Setting.title || 'Vue Typescript Admin'; // TODO: get this variable from setting.ts
 
+// https://cli.vuejs.org/zh/config/#vue-config-js
 module.exports = {
   publicPath: process.env.NODE_ENV === 'production' ? '/companyName/' : '/',
   // http://www.ruanyifeng.com/blog/2014/05/restful_api.html
@@ -34,8 +35,6 @@ module.exports = {
     // provide the app's title in webpack's name field, so that
     // it can be accessed in index.html to inject the correct title.
     config.set('name', name);
-
-    console.log(config.name());
 
     // https://webpack.js.org/configuration/devtool/#development
     config.when(process.env.NODE_ENV === 'development', (config) => config.devtool('cheap-eval-source-map'));

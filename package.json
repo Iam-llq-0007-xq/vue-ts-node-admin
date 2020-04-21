@@ -4,11 +4,10 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "bash ./script/svg.sh && vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
-    "lint": "vue-cli-service lint",
-    "svg": "./node_modules/vue-svgicon/dist/lib/index.js -s ./src/app/icons/svg -t ./src/app/icons/components --ext ts --es6"
+    "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "connect-history-api-fallback": "^1.6.0",
