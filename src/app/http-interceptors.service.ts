@@ -1,18 +1,18 @@
 // tslint:disable:max-classes-per-file
 import { Rxios, RxiosRequestConfig, RxiosResponseConfig, InterceptorsManager } from './utils/rxios';
-import { StoreStateService } from './store.state.service';
+import { UserModule } from './store/modules/user';
 
 export class AuthInterceptor implements InterceptorsManager<RxiosRequestConfig> {
   public onFulfilled(config: any) {
     console.log('request ~> ', config.url, config);
-    const token = StoreStateService.getToken();
+    const token = UserModule.token;
     if (token) {
       config.headers.token = token;
     }
     return config;
   }
   public onRejected(error: any): any {
-    return Promise.reject('AuthInterceptor ~>', error);
+    return Promise.reject(`AuthInterceptor ~> ${error}`);
   }
 }
 
@@ -29,6 +29,6 @@ export class ErrorHandleInterceptor implements InterceptorsManager<RxiosResponse
     return response;
   }
   public onRejected(error: any): any {
-    return Promise.reject('ErrorHandleInterceptor ~>', error);
+    return Promise.reject(`ErrorHandleInterceptor ~> ${error}`);
   }
 }

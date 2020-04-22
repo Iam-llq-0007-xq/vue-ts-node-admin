@@ -75,6 +75,12 @@ class User extends VuexModule implements UserState {
     this.SET_EMAIL(email);
   }
 
+  @Action
+  public Logout() {
+    this.ResetToken();
+    window.location.reload();
+  }
+
   @Mutation
   private SET_TOKEN(token: string) {
     this.token = token;

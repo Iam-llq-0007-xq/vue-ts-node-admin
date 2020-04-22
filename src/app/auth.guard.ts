@@ -5,14 +5,31 @@ import { StoreStateService } from './store.state.service';
 import { UserModule } from '@/app/store/modules/user';
 import { AuthModule } from '@/app/store/modules/auth';
 
-StoreStateService.removeToken();
-let num = 0;
-
+const userAuth: {
+  [index: string]: string[];
+  admin: string[];
+  developer: string[];
+  editor: string[];
+} = {
+  admin: [
+    'Dashboard',
+    'Admin1-1',
+    'Admin1-2',
+    'Admin2-1',
+    'Admin2-2',
+    'Admin1-3',
+    'Admin3-1',
+    'SvgTestPages',
+    'SvgTestPages/index',
+  ],
+  developer: ['Dashboard', 'Developer'],
+  editor: ['Dashboard', 'Editor'],
+};
 const whiteList: string[] = ['/login'];
+
 router.beforeEach((to: Route, _: Route, next: any) => {
   const hasToken: string | undefined = UserModule.token;
-  debugger;
-  console.log(num++, to);
+
   if (hasToken) {
     if (to.path === '/login') {
       next({ path: '/' });
@@ -20,22 +37,7 @@ router.beforeEach((to: Route, _: Route, next: any) => {
       if (!UserModule.role) {
         try {
           UserModule.GetUserInfo();
-          const roleMaps: any = {
-            admin: [
-              'Dashboard',
-              'Admin1-1',
-              'Admin1-2',
-              'Admin2-1',
-              'Admin2-2',
-              'Admin1-3',
-              'Admin3-1',
-              'SvgTestPages',
-              'SvgTestPages/index',
-            ],
-            developer: ['Dashboard', 'Developer'],
-            editor: ['Dashboard', 'Editor'],
-          };
-          const accessedRoutesNames: string[] = roleMaps[UserModule.role];
+          const accessedRoutesNames: string[] = userAuth[UserModule.role];
           AuthModule.GenerateRoutes(accessedRoutesNames);
           router.addRoutes(AuthModule.dynamicRoutes);
 

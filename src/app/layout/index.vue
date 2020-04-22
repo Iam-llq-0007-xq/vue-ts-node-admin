@@ -86,17 +86,3 @@ aside {
   }
 }
 </style>
-
-<style lang="scss">
-@import './style/layout-variables.scss';
-
-/* svg[class*="svg-menu-"] {
-  fill: $menuText;
-}
-
-[role="menu"].is-active {
-  svg[class*="svg-menu-"] {
-    fill: $menuActiveText;
-  }
-} */
-</style>

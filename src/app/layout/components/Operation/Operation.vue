@@ -15,8 +15,10 @@
 
 <script lang="ts">
 import { Vue, Prop, Component, Mixins } from 'vue-property-decorator';
-import OperationsButtons from './OperationsButtons.vue';
+import { UserModule } from '@/app/store/modules/user';
 import { DialogMixinModule } from './DialogMixin';
+import OperationsButtons from './OperationsButtons.vue';
+import { MessageBox } from 'element-ui';
 
 @Component({
   name: 'Operation',
@@ -77,9 +79,24 @@ export default class Opration extends Mixins(DialogMixinModule) {
           height: '100%',
         },
       },
-      handleClick: () => console.log('退出登陆 ...'),
+      handleClick: this.logout,
     },
   ];
+
+  async logout() {
+    try {
+      await MessageBox({
+        title: '提示',
+        message: '确认退出？',
+        lockScroll: true,
+        showCancelButton: true,
+        showConfirmButton: true,
+        cancelButtonText: '取消',
+        confirmButtonText: '确认',
+      });
+      UserModule.Logout();
+    } catch (e) {}
+  }
 }
 </script>
 
