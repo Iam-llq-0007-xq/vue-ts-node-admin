@@ -1,0 +1,40 @@
+.svg-wrap {
+  display: inline-block;
+  height: 18px;
+  width: 24px;
+  margin-right: 5px;
+  box-sizing: border-box;
+  line-height: 18px;
+  text-align: center;
+}
+
+.svg-icon {
+  display: inline-block;
+  font-size: 16px;
+  color: inherit;
+  vertical-align: middle;
+  fill: none;
+  stroke: currentColor;
+}
+
+.svg-fill {
+  fill: currentColor;
+  stroke: none;
+}
+
+.svg-up {
+  /* default */
+  transform: rotate(0deg);
+}
+
+.svg-right {
+  transform: rotate(90deg);
+}
+
+.svg-down {
+  transform: rotate(180deg);
+}
+
+.svg-left {
+  transform: rotate(-90deg);
+}

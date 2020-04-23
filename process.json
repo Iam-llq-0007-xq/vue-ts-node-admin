@@ -1,0 +1,25 @@
+{
+  "apps": [
+    {
+      "name": "web-node",
+      "script": "./server.js",
+      "env": {
+        "NODE_ENV": "development",
+        "TARGET_URL": "http://172.30.1.175",
+        "SERVER_PORT": 8001
+      },
+      "env_production": {
+        "NODE_ENV": "production",
+        "TARGET_URL": "http://172.30.1.175", // https://icloud.sensetime.com/senserealty/api
+        "SERVER_PORT": 8001
+      },
+      "env_staging": {
+        "NODE_ENV": "staging",
+        "TARGET_URL": "http://10.152.36.134:8890/senserealty/api",
+        "SERVER_PORT": 8001
+      },
+      "watch": false,
+      "autorestart": false
+    }
+  ]
+}

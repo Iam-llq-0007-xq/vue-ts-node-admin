@@ -1,0 +1,32 @@
+/** layout variables */
+// sidebar
+$menuFontSize: 16px;
+$subMenuFontSize: 12px;
+
+$menuText: #bfcbd9;
+$menuActiveText: #fff;
+
+$menuBg: #304156;
+$menuHoverBg: #263445;
+$menuActiveBg: #263445;
+
+$subMenuBg: #1f2d3d;
+$subMenuHoverBg: #001528;
+$subMenuActiveBg: #001528;
+
+$sideBarWidth: 200px;
+$logoHeight: 100px;
+$logoWidth: 100%;
+
+// coding...
+
+:export {
+  sideBarWidth: $sideBarWidth;
+  logoHeight: $logoHeight;
+  menuBg: $menuBg;
+  menuHoverBg: $menuHoverBg;
+  subMenuBg: $subMenuBg;
+  subMenuHoverBg: $subMenuHoverBg;
+  menuText: $menuText;
+  menuActiveText: $menuActiveText;
+}
