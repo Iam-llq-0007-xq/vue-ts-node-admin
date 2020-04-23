@@ -1,9 +1,8 @@
 # vue-ts-admin
 
-## 结构
-
+## 项目结构
 ```
--project
+-root
   |script                                     脚本
   |public                                     静态文件
   |servers                                    node接口服务
@@ -74,6 +73,12 @@ sh ./script/inspect.sh
 // 上线
 node deploy.js
 ```
+
+## Feature
+- 单元测试
+- mock服务数据 + node
+- ci
+- router 优化
 
 
 ### Customize configuration
