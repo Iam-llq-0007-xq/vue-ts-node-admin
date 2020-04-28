@@ -1,14 +1,21 @@
 <template>
   <div>
-    Dashboard
+    <upload />
   </div>
 </template>
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
+import Upload from './components/Upload.vue';
 
-@Component({})
-export default class Dashboard extends Vue {}
+@Component({
+  components: {
+    Upload,
+  }
+})
+export default class Dashboard extends Vue {
+  
+}
 </script>
 
 <style scoped></style>
