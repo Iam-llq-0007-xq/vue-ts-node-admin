@@ -27,7 +27,7 @@ const userAuth: {
 };
 const whiteList: string[] = ['/login'];
 
-router.beforeEach((to: Route, _: Route, next: any) => {
+router.beforeEach(async (to: Route, _: Route, next: any) => {
   const hasToken: string | undefined = UserModule.token;
 
   if (hasToken) {
@@ -36,18 +36,14 @@ router.beforeEach((to: Route, _: Route, next: any) => {
     } else {
       if (!UserModule.role) {
         try {
-          UserModule.GetUserInfo();
-          const accessedRoutesNames: string[] = userAuth[UserModule.role];
+          const data: any = await UserModule.GetUserInfo();
+          const accessedRoutesNames: string[] = userAuth[data.role] || [];
           AuthModule.GenerateRoutes(accessedRoutesNames);
           router.addRoutes(AuthModule.dynamicRoutes);
-
-          console.log(AuthModule.routes, router);
-          console.log(to);
-
           next({ ...to, replace: true });
         } catch (e) {
           UserModule.ResetToken();
-          next(`/login?redirect=${to.path}`);
+          next(`/login`);
         }
       } else {
         next();
@@ -57,7 +53,7 @@ router.beforeEach((to: Route, _: Route, next: any) => {
     if (whiteList.indexOf(to.path) !== -1) {
       next();
     } else {
-      next(`/login?redirect=${to.path}`);
+      next(`/login`);
     }
   }
 });

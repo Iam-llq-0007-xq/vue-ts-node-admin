@@ -23,7 +23,7 @@ module.exports = {
       errors: true,
     },
     progress: false,
-    proxy: `http://localhost:8001`,
+    proxy: `http://localhost:8003`,
   },
   pluginOptions: {
     'style-resources-loader': {

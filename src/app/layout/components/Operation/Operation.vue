@@ -95,7 +95,10 @@ export default class Opration extends Mixins(DialogMixinModule) {
         confirmButtonText: '确认',
       });
       UserModule.Logout();
-    } catch (e) {}
+      this.$router.push('/login');
+    } catch (e) {
+      // coding..
+    }
   }
 }
 </script>

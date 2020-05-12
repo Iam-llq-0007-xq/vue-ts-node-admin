@@ -29,61 +29,35 @@ export default class Login extends Vue {
     userName: string;
     pwd: string;
   } = {
-    userName: 'SKtest',
-    pwd: 'SKtest123',
+    userName: 'admin',
+    pwd: 'aaa',
   };
+  private errorMsg: string = '';
 
   submit() {
     const userInfo = {
       user_name: this.form.userName,
       pwd: this.form.pwd,
-      scene: 'login',
     };
     this.http.login(userInfo).subscribe(
-      (res) => {
-        console.log('login res ...', res);
-        this.getUserInfo(res);
+      (res: any) => {
+        this.setUserInfo(res);
       },
-      (error) => {},
+      (error) => { },
       () => {
-        this.$router.push('/');
+        const timer = setTimeout(() => {
+          clearTimeout(timer);
+          this.$router.push('/');
+        }, 100);
       },
     );
   }
 
-  getUserInfo(data: any) {
-    this.storeState.setToken(data.token);
+  setUserInfo(data: any) {
+    this.storeState.setToken(data.role + '_token');
     UserModule.SetToken();
-    this.storeState.setAk(data.ak);
-    this.storeState.setCompanyId(data.company_id);
-    this.storeState.setCompanyName(data.company_name);
-    const isRoot: string = this.isRootFromTypeAndNodeId(data.type, data.node_id);
-    this.storeState.setIsRoot(isRoot);
-    this.storeState.setNodeId(data.node_id);
-    this.storeState.setNodeName(data.node_name);
-    this.storeState.setProductline(this.toString(data.productline));
-    this.storeState.setProductlineName(this.toString(data.productline_name));
-    const role = this.getRoleFromRoleOrType(data.type, data.role);
-    this.storeState.setRole(role);
-    this.storeState.setEmail(data.email);
-    this.storeState.setUid(data.user_id);
-    this.storeState.setUsername(data.name);
-  }
-
-  isRootFromTypeAndNodeId(type: string, nodeId: string): string {
-    const isRoot: boolean = type === 'admin' && nodeId === '000';
-    return isRoot + '';
-  }
-  getRoleFromRoleOrType(type: string, role: number): string {
-    switch (role) {
-      case 2:
-        return 'operation';
-      default:
-        return type;
-    }
-  }
-  toString(param: any) {
-    return JSON.stringify(param);
+    this.storeState.setRole('admin');
+    this.storeState.setUsername('xiaoqge');
   }
 }
 </script>
